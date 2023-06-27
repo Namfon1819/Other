@@ -4,22 +4,21 @@ from matplotlib import pyplot as plt
 #path_to_img = r"C:\teacher\image.jpg"
 img = cv.imread(r"C:\teacher\images\image.jpg")
 img_h, img_w, _ = img.shape
-block_size = 100
-overlap = 0.5
+block_size = 500
 #split_width = 300
 #split_height = 300
 
 
-def start_points(size, split_size, overlap=0):
+def start_points(size, block_size, overlap=0):
     points = [0]
-    stride = int(split_size * (1-overlap))
+    stride = int(block_size * (1-overlap))
     counter = 1
     while True:
         pt = stride * counter
-        if pt + split_size >= size:
-            if split_size == size:
+        if pt + block_size >= size:
+            if block_size == size:
                 break
-            points.append(size - split_size)
+            points.append(size - block_size)
             break
         else:
             points.append(pt)
@@ -27,8 +26,8 @@ def start_points(size, split_size, overlap=0):
     return points
 
 
-X_points = start_points(img_w, block_size = 100, overlap= 0.5)
-Y_points = start_points(img_h, block_size = 100, overlap= 0.5)
+X_points = start_points(img_w, block_size, 0.5)
+Y_points = start_points(img_h, block_size, 0.5)
 
 count = 0
 name = 'out1'
