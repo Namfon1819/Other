@@ -1,10 +1,12 @@
+from tarfile import BLOCKSIZE
 import cv2 as cv
 from matplotlib import pyplot as plt
 
 #path_to_img = r"C:\teacher\image.jpg"
 img = cv.imread(r"C:\teacher\images\image.jpg")
 img_h, img_w, _ = img.shape
-block_size = 500
+split_width, split_height = BLOCKSIZE 
+BLOCKSIZE = 64, 64
 #split_width = 300
 #split_height = 300
 
