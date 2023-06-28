@@ -1,7 +1,7 @@
 import numpy as np 
 import cv2 as cv
 
-img = cv.imread(r'C:\teacher\inclass\out1.jpg', cv.IMREAD_GRAYSCALE)
+img = cv.imread(r'C:\teacher\inclass\week_two\out1.jpg', cv.IMREAD_GRAYSCALE)
 
 filterSize = 15;
 kernel = np.ones((filterSize,filterSize), np.float32)/(filterSize*2)

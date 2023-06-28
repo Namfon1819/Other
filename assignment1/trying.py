@@ -3,7 +3,7 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 
 #path_to_img = r"C:\teacher\image.jpg"
-img = cv.imread(r"C:\teacher\images\image.jpg")
+img = cv.imread(r"C:\teacher\assignment1\image.jpg")
 img_h, img_w, _ = img.shape
 split_width, split_height = BLOCKSIZE 
 BLOCKSIZE = 64, 64
