@@ -1,49 +1,18 @@
-from tarfile import BLOCKSIZE
+import numpy as np
 import cv2 as cv
-from matplotlib import pyplot as plt
 
-#path_to_img = r"C:\teacher\image.jpg"
 img = cv.imread(r"C:\teacher\assignment1\image.jpg")
 img_h, img_w, _ = img.shape
-split_width, split_height = BLOCKSIZE 
-BLOCKSIZE = 64, 64
-#split_width = 300
-#split_height = 300
+image = np.random.randn(4, 4, 3)
+tiles = np.zeros((4, 2, 2, 3))
 
+c = 0
 
-def start_points(size, block_size, overlap=0):
-    points = [0]
-    stride = int(block_size * (1-overlap))
-    counter = 1
-    while True:
-        pt = stride * counter
-        if pt + block_size >= size:
-            if block_size == size:
-                break
-            points.append(size - block_size)
-            break
-        else:
-            points.append(pt)
-        counter += 1
-    return points
+for i in range(0, image.shape[1], 2):  
 
+    for j in range(0, image.shape[2], 2):
 
-X_points = start_points(img_w, block_size, 0.5)
-Y_points = start_points(img_h, block_size, 0.5)
-
-count = 0
-name = 'out1'
-frmt = 'jpg'
-
-for i in Y_points:
-    for j in X_points:
-        split = img[i:i+block_size, j:j+block_size]
-        cv.imshow('Block', split)
-        cv.waitKey(0)
-        cv.imwrite('{}_{}.{}'.format(name, count, frmt), split)
-        count += 1
-
+        tiles[c] = image[i:i+2, j:j+2, :]
+        cv.imshow('Block',tiles)
+        c += 1
 cv.destroyAllWindows()
-#img =cv.imread('split', 0)
-#plt.hist(img.ravel(), 256, [0, 256])
-#plt.show()

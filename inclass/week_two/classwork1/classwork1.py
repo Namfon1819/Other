@@ -17,3 +17,4 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 
+#หนูงงกับโจทย์ได้มาแบบนี้ค่าาา
